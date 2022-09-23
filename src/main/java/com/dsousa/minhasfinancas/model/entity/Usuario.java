@@ -26,13 +26,13 @@ public class Usuario {
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Long id;
 	
-	@Column(name = "nome")
+	@Column(name = "nome", length = 150)
 	private String nome;
 	
-	@Column(name = "email")
+	@Column(name = "email", length = 100)
 	private String email;
 	
-	@Column(name = "senha")
+	@Column(name = "senha", length = 20)
 	@JsonIgnore
 	private String senha;
 
