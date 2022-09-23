@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
 import com.dsousa.minhasfinancas.api.dto.TokenDTO;
 import com.dsousa.minhasfinancas.api.dto.UsuarioDTO;
@@ -56,6 +57,8 @@ public class UsuarioResource {
 			Usuario usuarioSalvo = service.salvarUsuario(usuario);
 			return new ResponseEntity(usuarioSalvo, HttpStatus.CREATED);
 		}catch (RegraNegocioException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}catch (InternalServerError e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		
