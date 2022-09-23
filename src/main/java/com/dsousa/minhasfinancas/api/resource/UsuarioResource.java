@@ -58,10 +58,7 @@ public class UsuarioResource {
 			return new ResponseEntity(usuarioSalvo, HttpStatus.CREATED);
 		}catch (RegraNegocioException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
-		}catch (InternalServerError e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-		
+		}		
 	}
 	
 	@GetMapping("{id}/saldo")
